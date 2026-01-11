@@ -1,0 +1,22 @@
+# config/qc.yaml
+quicklook:
+  max_dim_px: 1800
+
+qc_thresholds:
+  # Missing-data ratio thresholds (fraction of pixels)
+  nodata_green_max: 0.01
+  nodata_yellow_max: 0.05
+
+  # Simple value sanity thresholds (generic, used only when nodata is fine)
+  # For bathymetry-like grids you often expect negative depths; this is a soft check.
+  positive_fraction_yellow_max: 0.05
+  positive_fraction_red_max: 0.20
+
+  # Outlier check (robust): flag if too much mass beyond [p01, p99]
+  tail_fraction_yellow_max: 0.02
+  tail_fraction_red_max: 0.05
+
+sampling:
+  # For large rasters we sample pixels for percentiles/hist to keep it fast.
+  max_sample: 400000
+  seed: 42
